@@ -6,7 +6,7 @@
 import std;
 import os;
 import sspi from "..";
-import net from "SorinS/netgoose@v0.7.0";
+import net from "SorinS/netgoose@v0.9.1";
 
 fn main() {
     if !sspi::available() {

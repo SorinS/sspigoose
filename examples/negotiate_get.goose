@@ -14,7 +14,7 @@
 import std;
 import os;
 import sspi from "..";
-import net from "SorinS/netgoose@v0.7.0";
+import net from "SorinS/netgoose@v0.9.1";
 import sspi.negotiate;
 
 fn usage() {
@@ -148,7 +148,13 @@ fn main() {
             value = copy(next);
             continue;
         }
-        if auth.len > 0 { sspi::http_authorization(a, auth); }
+        if !a.done {
+            // Kerberos: the server proves itself with its last token.
+            if auth.len == 0 { fail("the server did not authenticate itself"); }
+            let _, st3 = sspi::http_authorization(a, auth);
+            if st3 != sspi::OK { fail(str("the server's token: ", sspi::error_text(st3))); }
+            print("server: authenticated");
+        }
         print(str("package: ", sspi::http_package(a)));
         print(str("body: ", bodyv));
         net::close(fd);

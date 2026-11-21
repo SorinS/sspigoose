@@ -1,7 +1,5 @@
-// sspi's sidecar: src/sspi.c, SSPI's handles and buffers (secur32 and
-// crypt32 are loaded at run time: nothing to link), compiled only into
-// programs that call it.
-c_sources = ["src/sspi.c"];
-
-// Programs, not the package's modules.
-exclude = ["examples", "test", "scripts"];
+// sspi's sidecar. sspi has no C: its extern blocks bind Windows'
+// DLLs, which other platforms do not have, and "-" leaves them
+// unopened there.
+dylibs_macos = ["secur32=-", "crypt32=-", "kernel32=-"];
+dylibs_linux = ["secur32=-", "crypt32=-", "kernel32=-"];

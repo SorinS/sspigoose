@@ -12,10 +12,11 @@
 import std;
 import os;
 import sspi from "..";
-import net from "SorinS/netgoose@v0.7.0";
-import bignum from "SorinS/bigmongoose@v0.7.0";
-import asn1 from "SorinS/asn1goose@v0.7.0";
-import x509 from "SorinS/x509goose@v0.7.0";
+import entropy from "SorinS/entropygoose@v0.9.1";
+import net from "SorinS/netgoose@v0.9.1";
+import bignum from "SorinS/bigmongoose@v0.9.1";
+import asn1 from "SorinS/asn1goose@v0.9.1";
+import x509 from "SorinS/x509goose@v0.9.1";
 import sspi.schannel;
 
 fn usage() {

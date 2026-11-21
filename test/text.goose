@@ -1,10 +1,10 @@
 // sspi: what is the same on every platform: status codes and their
-// text, the package lines the C half writes, and the WWW-Authenticate
+// text, the package lines sspi.native writes, and the WWW-Authenticate
 // values the Negotiate helper reads.
 
 import std;
 import sspi from "..";
-import net from "SorinS/netgoose@v0.7.0";
+import net from "SorinS/netgoose@v0.9.1";
 import sspi.negotiate;
 
 fn main() {
